@@ -4,8 +4,8 @@
   </div>
 <% else %>
   <div class="suite">
-  <% @mocha_suites.each do |suite| %>
-    <h1><%= link_to suite, mocha_test_page_path(:suite => suite) %></h1>
+  <% @mocha_suites.each do |file,text| %>
+    <h1><%= link_to text, mocha_test_page_path(:suite => CGI.escape(file)) %></h1>
   <% end %>
   </div>
 <% end %>

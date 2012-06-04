@@ -21,9 +21,12 @@ module MochaRails
     def list
       match = '*-suite.js*'
       search = File.join(@test_dir,match)
-      e = Regexp.new(@test_dir + "/(.+?)-suite.js*$","i")
-      @mocha_suites = Dir[search].map do |path|
-        path.gsub(e,"\\1")
+      e = Regexp.new(@test_dir + "/(.+?-suite.js*)$","i")
+      @mocha_suites = {}
+      Dir[search].map do |path|
+        file = path.gsub(e,"\\1")
+        text = file.gsub(/-suite.+?/,'')
+        @mocha_suites[file]=text
       end
     end
 
@@ -35,6 +38,7 @@ module MochaRails
         return
       end
 
+      suite = CGI.unescape(suite)
       search = File.join(@test_dir,suite + '-suite.js*')
       files = Dir[search]
       if files.length > 0
