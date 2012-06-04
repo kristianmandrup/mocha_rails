@@ -1,0 +1,11 @@
+<% if @mocha_suites.length == 0 %>
+  <div class="test fail">
+    There are currently no test suites
+  </div>
+<% else %>
+  <div class="suite">
+  <% @mocha_suites.each do |suite| %>
+    <h1><%= link_to mocha_test_page(suite) %></h1>
+  <% end %>
+  </div>
+<% end %>

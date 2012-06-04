@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Mocha Rails</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <%= stylesheet_link_tag    "mocha_rails/application", :media => "all" %>
+<% if @mocha_suite %>
+  <%= content_for(:mocha_javascripts) do %>
     <%= javascript_include_tag "mocha_rails/application" %>
-    <%= javascript_include_tag "mocha-suite" %>
-  </head>
-  <body>
-    <div id="mocha"></div>
-  </body>
-</html>
+    <%= javascript_include_tag @mocha_suite %>
+  <% end %>
+  <div id="mocha"></div>
+<% else %>
+  <div class="test fail">
+    Test suite not found
+  </div>
+<% end %>
