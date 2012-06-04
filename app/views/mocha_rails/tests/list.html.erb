@@ -5,7 +5,7 @@
 <% else %>
   <div class="suite">
   <% @mocha_suites.each do |suite| %>
-    <h1><%= link_to mocha_test_page(suite) %></h1>
+    <h1><%= link_to mocha_test_page_path(suite) %></h1>
   <% end %>
   </div>
 <% end %>
