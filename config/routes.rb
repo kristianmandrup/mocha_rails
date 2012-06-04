@@ -1,8 +1,8 @@
 MochaRails::Engine.routes.draw do
-  root :to => "tests#index"
+  root :to => "tests#list"
   controller :tests do
-    get "/list" => :list, :as => :mocha_tests_list
+    get "/mocha" => :index, :as => :mocha_tests_index
     get "/:suite" => :page, :as => :mocha_test_page
-    get "/" => :index, :as => :mocha_tests_index
+    get "/" => :list, :as => :mocha_tests_list
   end
 end
